@@ -9,6 +9,7 @@
 {# ref: http://flask.pocoo.org/docs/patterns/wtforms/?highlight=forms#forms-in-templates #}
 {% from "helpers/forms.html" import render_field %}
 <form action="{{ url_for('.login', next=request.args.get('next', '')) }}" method="POST">
+{{ form.hidden_tag() }}
   <dl>
     {{ render_field(form.username) }}
     {{ render_field(form.password) }}
