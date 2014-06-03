@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <title>know_users {% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+    {% endblock %}
+  </head>
+  <body>
+  {% block body %}
+  <h1>know_users</h1>
+  {% block content %}
+  {% endblock %}
+  {% endblock %}
+  </body>
+</html>
