@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %} {{ super() }} - Login{% endblock %}
+{% block content %}
+    {{ super() }}
+    <section class="user_settings">
+    {% with current_user %}
+    <ul>
+        <li>Username: {{ username }}</li>
+        <li>Email: {{ email }}</li>
+    </ul>
+    {% endwith %}
+    </section>
+{% endblock content %}

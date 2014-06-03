@@ -1,0 +1,12 @@
+ {% block session %}
+      <div id="session-info">
+	{% if current_user.is_anonymous() %}
+      <p class="connect">You are not identified. Please <a href="{{ url_for('users.login') }}">login</a>
+          or <a href="{{url_for('users.register')}}">sign in</a> .
+      {% else %}
+      <p class="connected">You are connected as <em>{{ current_user.name}}</em>.
+     When done please <a href="{{ url_for('users.logout') }}">logout</a>.</p>
+      </p>
+      {% endif %}
+      </div>
+  {% endblock %}

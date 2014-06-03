@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %} {{ super() }} - Login{% endblock %}
+{% block content %}
+    {{ super() }}
+    <section class="users_list">
+        <table>
+
+    {% for user in all_users %}
+    <tr>
+        <td>{{ username }}</td>
+        <td>{{ email }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    </section>
+{% endblock content %}

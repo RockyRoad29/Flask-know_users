@@ -2,14 +2,15 @@
 <html lang="en">
   <head>
     {% block head %}
-    <title>know_users {% block title %}{% endblock %}</title>
+    <title>{% block title %}{{ constants.APP_NAME }} {% endblock %}</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
     {% endblock %}
   </head>
   <body>
   {% block body %}
-  <h1>know_users</h1>
+  <h1>{{ self.title() }}</h1>
+      {% include 'session-info.html'  %}
   {% block content %}
   {% endblock %}
   {% endblock %}
