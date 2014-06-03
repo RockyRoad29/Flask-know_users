@@ -1,12 +1,11 @@
-know_users
+Flask-know_users
 ================
 
-A "Larger" flask app conforming to
-http://flask.pocoo.org/docs/patterns/packages/
+An app template using Flask-login extension
 
 Run with
     $ python runserver.py
-     * Running on http://127.0.0.1:5000/
+     * Running on http://127.0.0.1:5001/
 
-Now head over to http://127.0.0.1:5000/,
-and you should see your hello world greeting.
+Now head over to http://127.0.0.1:5001/,
+and you should see your app running.
