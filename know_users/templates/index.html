@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 {% block title %} {{ super() }}- Home{% endblock %}
 {% block content %}
-Hello World
-{% endblock %}
+{% if current_user.is_authenticated() %}
+          <p class="list_caption">
+      You have now access to:
+      </p>
+        <ul>
+        <li><a href="{{ url_for('users.users_list') }}">Users List</a></li>
+        </ul>
+      {% endif %}
+{% endblock content %}

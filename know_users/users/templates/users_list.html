@@ -1,16 +1,30 @@
 {% extends "layout.html" %}
-{% block title %} {{ super() }} - Login{% endblock %}
+{% block title %} {{ super() }} - Users List{% endblock %}
 {% block content %}
     {{ super() }}
     <section class="users_list">
         <table>
-
-    {% for user in all_users %}
+    <thead>
     <tr>
-        <td>{{ username }}</td>
-        <td>{{ email }}</td>
+        <th class="id">id</th>
+        <th class="password">password</th>
+        <th class="email">email</th>
+
+    </tr>
+    </thead>
+        <tbody>
+
+    {% for name, user in all_users.iteritems() %}
+    <tr>
+        <td class="id">{{ user.id }}</td>
+        <td class="password">{{ user.password }}</td>
+        <td class="email">{{ user.email }}</td>
     </tr>
     {% endfor %}
+        </tbody>
     </table>
     </section>
 {% endblock content %}
+{% block footer %}
+    <p>Back to <a href="{{ url_for('index') }}">home</a></p>
+{% endblock footer %}

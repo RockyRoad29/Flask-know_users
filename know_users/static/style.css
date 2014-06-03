@@ -2,3 +2,8 @@ body {
   font-family: sans-serif;
   font-size: 11pt;
 }
+section.flashes {
+    font-weight: bold;
+    background-color: rgb(237, 253, 173);
+    color: green;
+}

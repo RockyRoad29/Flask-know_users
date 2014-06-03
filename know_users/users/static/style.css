@@ -1,0 +1,5 @@
+ul.errors {
+    color: red;
+    list-style-type: none;
+    margin: 0;
+}

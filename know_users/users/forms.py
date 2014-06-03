@@ -1,3 +1,4 @@
+from flask import current_app
 from flask.ext.wtf import Form
 from wtforms import validators,  ValidationError, BooleanField, StringField, PasswordField
 from .models import User
@@ -24,13 +25,21 @@ class LoginForm(Form):
         form.user = user
 
 class RegistrationForm(Form):
-    #username = StringField('Username', [validators.Length(min=4, max=25)])
-    username = StringField('Username')
-    #email = StringField('Email Address', [validators.Length(min=6, max=35)])
-    email = StringField('Email Address')
-    #password = PasswordField('New Password', [
-    #password = PasswordField('New Password')
-    #confirm = PasswordField('Repeat Password')
-    #accept_tos = BooleanField('I accept the TOS', [validators.DataRequired()])
+    username = StringField('Username', [validators.Length(min=4, max=25)])
+    #username = StringField('Username', [validators.DataRequired()])
+    email = StringField('Email Address', [validators.Email()])
+    #email = StringField('Email Address', [validators.DataRequired()])
+    password = PasswordField('New Password', [
+        validators.DataRequired(message='Your password protects you against identity theft'),
+        validators.EqualTo('confirm', message='Passwords must match')])
+    #password = PasswordField('New Password', [validators.DataRequired()])
+    confirm = PasswordField('Repeat Password')
+    accept_tos = BooleanField('I accept the TOS',
+                              [validators.AnyOf((True,),
+                                    message="You cannot register unless you accept the TOS")])
 
-    #def validate
+    def validate_username(self, field):
+        user = User.get(self.username.data)
+        if user is not None:
+            raise ValidationError("This user name is already used")
+        return True

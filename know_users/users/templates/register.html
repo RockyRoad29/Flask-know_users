@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
-{% block title %} {{ super() }} - Login{% endblock %}
+{% block title %} {{ super() }} - Register{% endblock %}
+{% block stylesheets %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('.static', filename='style.css') }}"/>
+{% endblock %}
 {% block content %}
 {{ super() }}
 {# ref: http://flask.pocoo.org/docs/patterns/wtforms/?highlight=forms#forms-in-templates #}
@@ -9,11 +13,11 @@
     {{ render_field(form.username) }}
     {{ render_field(form.email) }}
     {{ render_field(form.password) }}
-      {#
+
     {{ render_field(form.confirm) }}
     {{ render_field(form.accept_tos) }}
-       #}
+
   </dl>
-  <p><input type=submit value=Register>
+  <p><input type="submit" value="Register">
 </form>
 {% endblock %}

@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 {% block title %} {{ super() }} - Login{% endblock %}
+{% block stylesheets %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('.static', filename='style.css') }}"/>
+{% endblock %}
 {% block content %}
     {{ super() }}
 {# ref: http://flask.pocoo.org/docs/patterns/wtforms/?highlight=forms#forms-in-templates #}

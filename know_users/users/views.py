@@ -1,10 +1,11 @@
 from flask import Blueprint, redirect, flash, render_template, request, url_for, current_app
 from flask.ext.login import login_user, login_required, logout_user
 from know_users.users.forms import RegistrationForm, LoginForm
-from know_users.users.models import User
+from know_users.users.models import User, all_users
 
-bp = Blueprint('users', __name__, template_folder='templates')
-
+bp = Blueprint('users', __name__,
+                  template_folder='templates',
+                  static_folder='static')
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
@@ -26,7 +27,7 @@ def register():
                     form.password.data)
         User.add(user)
         flash('Thanks for registering')
-        return redirect(url_for('index'))
+        return redirect(url_for('.users_list'))
     return render_template('register.html', form=form)
 
 @bp.route("/logout")
@@ -44,4 +45,5 @@ def settings():
 @bp.route("/list")
 #@login_required
 def users_list():
-    return render_template('users_list.html')
+    current_app.logger.info('%d users registered', len(all_users))
+    return render_template('users_list.html', all_users=all_users)
